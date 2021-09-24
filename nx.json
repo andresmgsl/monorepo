@@ -36,6 +36,9 @@
     "arweave-playground-e2e": {
       "tags": [],
       "implicitDependencies": ["arweave-playground"]
+    },
+    "code-generator": {
+      "tags": []
     }
   }
 }

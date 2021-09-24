@@ -1,0 +1,33 @@
+{
+  "info": {
+    "_postman_id": "a184ad3b-5827-4945-bef4-f8e70fca3281",
+    "name": "Code Generator",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Generate Program File",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"abium\",\n  \"id\": \"E4kBuz9gC7T32LBKnH3kscxjay1Y3KqFkXJt8UHq1BN4\",\n  \"collections\": [\n    {\n      \"name\": \"coleccionUno\",\n      \"documents\": [\n        {\n          \"name\": \"documentoUno\"\n        },\n        {\n          \"name\": \"documentoDos\"\n        }\n      ],\n      \"attrs\": [\n        \"pub content: [u8; 32]\",\n        \"pub id: [u8; 32]\",\n        \"pub other: [u8; 32]\"\n      ]\n    },\n    {\n      \"name\": \"coleccionDos\",\n      \"documents\": [\n        {\n          \"name\": \"documentoTres\"\n        },\n        {\n          \"name\": \"documentoCuatro\"\n        }\n      ],\n      \"attrs\": [\"pub content: [u8; 32]\"]\n    },\n    {\n      \"name\": \"daniel\",\n      \"documents\": [\n        {\n          \"name\": \"rap\"\n        },\n        {\n          \"name\": \"prueba\"\n        }\n      ],\n      \"attrs\": [\"pub color: [u8; 32]\"]\n    }\n  ]\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3333/api/generateProgramFile",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3333",
+          "path": ["api", "generateProgramFile"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
