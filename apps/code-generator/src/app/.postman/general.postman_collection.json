@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "a184ad3b-5827-4945-bef4-f8e70fca3281",
+		"name": "Code Generator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Code Generator - Generate Program File",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"98Pa3oCeSHusR2KRDNP7qswDA5BHeL3Bd8PmHNoLPMkw\",\n    \"name\": \"TODO\",\n    \"collections\": [\n        {\n            \"name\": \"user\",\n            \"attributes\": [\n                {\n                    \"attributeType\": \"u32\",\n                    \"bump\": 252,\n                    \"name\": \"Name\",\n                    \"size\": 4\n                },\n                {\n                    \"attributeType\": \"[u32; 4]\",\n                    \"bump\": 254,\n                    \"name\": \"phones\",\n                    \"size\": 16\n                }\n            ],\n            \"instructions\": [\n                {\n                    \"name\": \"Say Hello\",\n                    \"arguments\": []\n                }\n            ]\n        },\n        {\n            \"name\": \"task\",\n            \"attributes\": [\n                {\n                    \"attributeType\": \"u32\",\n                    \"bump\": 255,\n                    \"name\": \"name\",\n                    \"size\": 4\n                },\n                {\n                    \"attributeType\": \"u32\",\n                    \"bump\": 254,\n                    \"name\": \"category\",\n                    \"size\": 4\n                }\n            ],\n            \"instructions\": [\n                {\n                    \"name\": \"duplicate\",\n                    \"arguments\": [\n                        {\n                            \"attributeType\": \"[u32; 32]\",\n                            \"bump\": 255,\n                            \"name\": \"Extra Data\"\n                        },\n                        {\n                            \"attributeType\": \"u32\",\n                            \"bump\": 252,\n                            \"name\": \"New Name\"\n                        },\n                        {\n                            \"attributeType\": \"u32\",\n                            \"bump\": 254,\n                            \"name\": \"New Category\"\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"delete\",\n                    \"arguments\": []\n                }\n            ]\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/api/generateProgramFile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"api",
+						"generateProgramFile"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

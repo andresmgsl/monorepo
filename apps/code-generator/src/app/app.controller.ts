@@ -2,7 +2,7 @@ import { Body, Controller, Post, Req, Res } from '@nestjs/common';
 
 import { AppService } from './app.service';
 import { ProgramMetadata } from './dto/file.dto';
-import { generateFileResponse } from './types';
+import { IGenerateFileResponse } from './dto/types';
 
 @Controller()
 export class AppController {
@@ -10,12 +10,13 @@ export class AppController {
 
   @Post('/generateProgramFile')
   createFile(
-    @Body() file: ProgramMetadata,
-    @Req() request: Request,
-    @Res() response: Response
-  ): generateFileResponse {
-    console.log(response,request);
-    const resp = this.appService.generateFile(file);
+    @Body() data: ProgramMetadata,
+    // @Req() request: Request,
+    // @Res() response: Response
+  ): IGenerateFileResponse {
+    // console.log(response,request);
+    console.log("body", data);
+    const resp = this.appService.generateFile(data);
 
     return resp;
   }

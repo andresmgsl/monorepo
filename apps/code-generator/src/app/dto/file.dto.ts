@@ -1,22 +1,26 @@
 import { IsArray, IsString } from 'class-validator';
 
-export class ProgramAppDocuments {
-  @IsString()
-  name: string;
-
-  @IsArray()
-  attrs: string[];
-}
-
 export class ProgramAppCollections {
   @IsString()
   name: string;
 
   @IsArray()
-  documents: ProgramAppDocuments[];
+  instructions: {
+    name: string;
+    arguments: {
+      name: string;
+      bump: number;
+      attributeType: string;
+    }[];
+  }[];
 
   @IsArray()
-  attrs: string[];
+  attributes: {
+    name: string;
+    size: number;
+    bump: number;
+    attributeType: string;
+  }[];
 }
 
 export class ProgramMetadata {
