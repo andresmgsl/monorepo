@@ -39,6 +39,9 @@
     },
     "code-generator": {
       "tags": []
+    },
+    "codegenerator": {
+      "tags": []
     }
   }
 }

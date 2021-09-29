@@ -3,12 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400&display=swap');
 
 body {
-    background-color: #161616;
+    background-color: #e6e6e6;
 }
 
 body, h1, h3{
     font-family: 'Roboto Mono', monospace;
-    color: #e6e6e6;
+    color: #141414;
 }
 
 main {
@@ -26,4 +26,9 @@ h1 {
 
 h3 {
     font-size: 24px !important;
+}
+
+.ace_editor {
+    min-height: 450px !important;
+    max-width: 1024px !important;
 }

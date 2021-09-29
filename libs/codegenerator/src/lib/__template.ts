@@ -1,14 +1,14 @@
-use anchor_lang::prelude::*;
+export const __rust_template = `use anchor_lang::prelude::*;
 
 declare_id!("{{program.id}}");
 
 #[program]
-pub mod {{program.name}} {
+pub mod {{program.name.pascalCase}} {
     use super::*;
 
     {{#each program.collections}}
     {{#each this.instructions}}
-    pub fn {{this.name.snakeCase}}(ctx: Context<{{this.name.pascalCase}}>,{{#each this.arguments}}{{this.name.pascalCase}}:{{this.attributeType}},{{/each}}) -> ProgramResult {
+    pub fn {{this.name.snakeCase}}(ctx: Context<{{this.name.pascalCase}}>{{#each this.arguments}}, {{this.name.pascalCase}}: {{this.attributeType}}{{/each}}) -> ProgramResult {
         // To implement
     }
     {{/each}}
@@ -36,12 +36,21 @@ pub struct {{this.name.pascalCase}} {
 {{#each this.instructions}}
 
 #[derive(Accounts)]
-#[instruction({{#each this.arguments}}{{this.name.snakeCase}}:{{this.attributeType}},{{/each}})]
+#[instruction({{#each this.arguments}}{{#if @first}}{{else}}, {{/if}}{{this.name.snakeCase}}:{{this.attributeType}}{{/each}})]
 pub struct {{this.name.pascalCase}}<'info>{
     #[account(
         init
     )]
+    pub application: Box<Account<'info, Application>>,
+    #[account(mut)]
+    pub collection: Box<Account<'info, Collection>>,
+    #[account(mut)]
+    pub authority: Signer<'info>,
+    pub system_program: Program<'info, System>
+
     //TODO
 }
 {{/each}}
 {{/each}}
+
+`;
