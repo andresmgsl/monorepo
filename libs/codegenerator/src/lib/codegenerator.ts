@@ -63,6 +63,6 @@ export function generateRustFile(metadata: IMetadata): IGenerateFileResponse {
     return { status: true, data: programFile };
   } catch (e) {
     console.error('Error:', e);
-    return { status: false, data: e.stack };
+    return { status: false, data: e };
   }
 }
