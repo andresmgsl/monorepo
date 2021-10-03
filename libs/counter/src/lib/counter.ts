@@ -1,12 +1,12 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 
 const __counterValue$ = new BehaviorSubject<number>(0);
-let __currentTimer: any; // diff in types, in somecase is Number (angular) in others is Timer (react)
+let __currentTimer: number;
 
 const startCounter = () => {
   const currentTimer = setInterval(() => {
     __counterValue$.next(__counterValue$.value + 1);
-  }, 1000);
+  }, 1000) as unknown as number; // this for react 'Timeout' type not 'number'
 
   __currentTimer = currentTimer;
 };
@@ -36,3 +36,7 @@ export const StopCounter = () => {
   PauseCounter();
   __counterValue$.next(0);
 };
+
+export const testFunction = () => {
+  return 
+}
