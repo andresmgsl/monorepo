@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@coding/arweave": ["libs/arweave/src/index.ts"],
-      "@coding/codegenerator": ["libs/codegenerator/src/index.ts"]
+      "@coding/codegenerator": ["libs/codegenerator/src/index.ts"],
+      "@coding/counter": ["libs/counter/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
