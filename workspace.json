@@ -23,6 +23,57 @@
         }
       }
     },
+    "arweave-api": {
+      "root": "apps/arweave-api",
+      "sourceRoot": "apps/arweave-api/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/arweave-api",
+            "main": "apps/arweave-api/src/main.ts",
+            "tsConfig": "apps/arweave-api/tsconfig.app.json",
+            "assets": ["apps/arweave-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/arweave-api/src/environments/environment.ts",
+                  "with": "apps/arweave-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "arweave-api:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/arweave-api/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/arweave-api"],
+          "options": {
+            "jestConfig": "apps/arweave-api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "arweave-playground": {
       "projectType": "application",
       "root": "apps/arweave-playground",
