@@ -148,6 +148,192 @@
         }
       }
     },
+    "blockchain-bsc-dapp-example": {
+      "projectType": "application",
+      "root": "apps/blockchain/bsc-dapp-example",
+      "sourceRoot": "apps/blockchain/bsc-dapp-example/src",
+      "prefix": "coding",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/blockchain/bsc-dapp-example",
+            "index": "apps/blockchain/bsc-dapp-example/src/index.html",
+            "main": "apps/blockchain/bsc-dapp-example/src/main.ts",
+            "polyfills": "apps/blockchain/bsc-dapp-example/src/polyfills.ts",
+            "tsConfig": "apps/blockchain/bsc-dapp-example/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/blockchain/bsc-dapp-example/src/favicon.ico",
+              "apps/blockchain/bsc-dapp-example/src/assets"
+            ],
+            "styles": ["apps/blockchain/bsc-dapp-example/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/blockchain/bsc-dapp-example/src/environments/environment.ts",
+                  "with": "apps/blockchain/bsc-dapp-example/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "blockchain-bsc-dapp-example:build:production"
+            },
+            "development": {
+              "browserTarget": "blockchain-bsc-dapp-example:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "blockchain-bsc-dapp-example:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/blockchain/bsc-dapp-example/src/**/*.ts",
+              "apps/blockchain/bsc-dapp-example/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/blockchain/bsc-dapp-example"],
+          "options": {
+            "jestConfig": "apps/blockchain/bsc-dapp-example/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "blockchain-ethereum-dapp-example": {
+      "projectType": "application",
+      "root": "apps/blockchain/ethereum-dapp-example",
+      "sourceRoot": "apps/blockchain/ethereum-dapp-example/src",
+      "prefix": "coding",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/blockchain/ethereum-dapp-example",
+            "index": "apps/blockchain/ethereum-dapp-example/src/index.html",
+            "main": "apps/blockchain/ethereum-dapp-example/src/main.ts",
+            "polyfills": "apps/blockchain/ethereum-dapp-example/src/polyfills.ts",
+            "tsConfig": "apps/blockchain/ethereum-dapp-example/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/blockchain/ethereum-dapp-example/src/favicon.ico",
+              "apps/blockchain/ethereum-dapp-example/src/assets"
+            ],
+            "styles": ["apps/blockchain/ethereum-dapp-example/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/blockchain/ethereum-dapp-example/src/environments/environment.ts",
+                  "with": "apps/blockchain/ethereum-dapp-example/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "blockchain-ethereum-dapp-example:build:production"
+            },
+            "development": {
+              "browserTarget": "blockchain-ethereum-dapp-example:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "blockchain-ethereum-dapp-example:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/blockchain/ethereum-dapp-example/src/**/*.ts",
+              "apps/blockchain/ethereum-dapp-example/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/blockchain/ethereum-dapp-example"],
+          "options": {
+            "jestConfig": "apps/blockchain/ethereum-dapp-example/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "code-generator": {
       "root": "apps/code-generator",
       "sourceRoot": "apps/code-generator/src",

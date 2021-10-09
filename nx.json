@@ -37,6 +37,12 @@
       "tags": [],
       "implicitDependencies": ["arweave-playground"]
     },
+    "blockchain-bsc-dapp-example": {
+      "tags": ["binance smartchain dapp"]
+    },
+    "blockchain-ethereum-dapp-example": {
+      "tags": ["ethereum dapp"]
+    },
     "code-generator": {
       "tags": []
     },
