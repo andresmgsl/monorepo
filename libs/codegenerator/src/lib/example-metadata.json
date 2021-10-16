@@ -1,0 +1,223 @@
+{
+  "application": {
+    "id": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+    "data": {
+      "name": "Zoolan",
+      "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq"
+    }
+  },
+  "collections": [
+    {
+      "id": "CTf3S5jgWiBPYyaDW6p5SnUVBEHdaUbyxLx5aShcSMnp",
+      "data": {
+        "application": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+        "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq",
+        "name": "user"
+      },
+      "attributes": []
+    },
+    {
+      "id": "Cq5AZgZ3reXJ68LVuMWXfnJeJhFLbkSynm9gGY7U2cHw",
+      "data": {
+        "application": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+        "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq",
+        "name": "animal"
+      },
+      "attributes": [
+        {
+          "id": "GMefnjkEiE7tECnN7E62GgTBsdpDJCXSJtaxLdoetTs7",
+          "data": {
+            "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq",
+            "application": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+            "collection": "Cq5AZgZ3reXJ68LVuMWXfnJeJhFLbkSynm9gGY7U2cHw",
+            "name": "name",
+            "kind": {
+              "id": 0,
+              "name": "u8",
+              "size": 1
+            },
+            "modifier": {
+              "id": 1,
+              "name": "array",
+              "size": 100
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "instructions": [
+    {
+      "id": "AWYBkAiWGiZ8VdHiJge6izegLqcKZkhFWsdQCZoYdaJL",
+      "data": {
+        "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq",
+        "application": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+        "name": "create animal",
+        "body": "  ctx.accounts.argument.name = vectorize_string(name, 32);\n  ctx.accounts.argument.kind = AttributeKind::from_index(kind)?;\n  ctx.accounts.argument.modifier = AttributeKindModifier::from_index(modifier, size)?;\n\n  Ok(())"
+      },
+      "arguments": [
+        {
+          "id": "3Wi1ZQCCAvYjsHkfKJyt9jpKrMXBQ7L4fmktrzF6WySH",
+          "data": {
+            "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq",
+            "application": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+            "instruction": "AWYBkAiWGiZ8VdHiJge6izegLqcKZkhFWsdQCZoYdaJL",
+            "name": "name",
+            "kind": {
+              "id": 2,
+              "name": "u32",
+              "size": 4
+            },
+            "modifier": {
+              "id": 0,
+              "name": "none",
+              "size": 1
+            }
+          }
+        }
+      ],
+      "accounts": [
+        {
+          "id": "2iT5GwsizuLKcitTeguDCVLDNY1Q5oKM8K5bjRbp8d4M",
+          "data": {
+            "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq",
+            "application": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+            "instruction": "AWYBkAiWGiZ8VdHiJge6izegLqcKZkhFWsdQCZoYdaJL",
+            "name": "animal",
+            "kind": {
+              "id": 0,
+              "name": "basic"
+            },
+            "modifier": {
+              "id": 1,
+              "name": "init"
+            },
+            "collection": {
+              "id": "Cq5AZgZ3reXJ68LVuMWXfnJeJhFLbkSynm9gGY7U2cHw",
+              "data": {
+                "application": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+                "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq",
+                "name": "animal"
+              },
+              "attributes": [
+                {
+                  "id": "GMefnjkEiE7tECnN7E62GgTBsdpDJCXSJtaxLdoetTs7",
+                  "data": {
+                    "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq",
+                    "application": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+                    "collection": "Cq5AZgZ3reXJ68LVuMWXfnJeJhFLbkSynm9gGY7U2cHw",
+                    "name": "name",
+                    "kind": {
+                      "id": 0,
+                      "name": "u8",
+                      "size": 1
+                    },
+                    "modifier": {
+                      "id": 1,
+                      "name": "array",
+                      "size": 100
+                    }
+                  }
+                }
+              ]
+            },
+            "program": null,
+            "close": null,
+            "payer": {
+              "id": "83ko3m4qujhj8u2oerzJLoLmFdtxhyhfLKDf7Zt1hqJR",
+              "data": {
+                "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq",
+                "application": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+                "instruction": "AWYBkAiWGiZ8VdHiJge6izegLqcKZkhFWsdQCZoYdaJL",
+                "name": "Authority",
+                "kind": {
+                  "id": 2,
+                  "name": "signer"
+                },
+                "modifier": {
+                  "id": 2,
+                  "name": "mut"
+                },
+                "collection": null,
+                "program": null,
+                "close": null,
+                "payer": null,
+                "space": null
+              }
+            },
+            "space": 20,
+            "relations": []
+          }
+        },
+        {
+          "id": "83ko3m4qujhj8u2oerzJLoLmFdtxhyhfLKDf7Zt1hqJR",
+          "data": {
+            "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq",
+            "application": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+            "instruction": "AWYBkAiWGiZ8VdHiJge6izegLqcKZkhFWsdQCZoYdaJL",
+            "name": "Authority",
+            "kind": {
+              "id": 2,
+              "name": "signer"
+            },
+            "modifier": {
+              "id": 2,
+              "name": "mut"
+            },
+            "collection": null,
+            "program": null,
+            "close": null,
+            "payer": null,
+            "space": null,
+            "relations": []
+          }
+        },
+        {
+          "id": "8XEQP1Hp85YerQvVeWFaYZ48R8p8kh82SD3JAy2adtz5",
+          "data": {
+            "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq",
+            "application": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+            "instruction": "AWYBkAiWGiZ8VdHiJge6izegLqcKZkhFWsdQCZoYdaJL",
+            "name": "Ssystem Program Custom",
+            "kind": {
+              "id": 1,
+              "name": "program"
+            },
+            "modifier": {
+              "id": 0,
+              "name": "none"
+            },
+            "collection": null,
+            "program": "11111111111111111111111111111111",
+            "close": null,
+            "payer": null,
+            "space": null,
+            "relations": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "CtKs2gNKNdmM9cCK4PLhQvvw1QqW39DLvPXM32YNjh7s",
+      "data": {
+        "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq",
+        "application": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+        "name": "remove animal",
+        "body": ""
+      },
+      "arguments": [],
+      "accounts": []
+    },
+    {
+      "id": "J8Hho4Ejc87v7gDLNtFr83sDL5HWqGNpZVhJgEmULneF",
+      "data": {
+        "authority": "4Y5KbUm1UdHQjRrJYbYhTmwaYAK5tJFeiXcLndTghetq",
+        "application": "GnGmh66e5qWgVaUzx6ktg7zM8k1t5Lkyieq1V8zjV3J1",
+        "name": "sell animal",
+        "body": ""
+      },
+      "arguments": [],
+      "accounts": []
+    }
+  ]
+}

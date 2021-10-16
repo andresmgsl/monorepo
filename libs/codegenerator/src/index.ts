@@ -1,2 +1,2 @@
-export * from './lib/codegenerator';
-export * from './lib/types';
+export * from './lib/code-generator';
+export * from './lib/utils/types';

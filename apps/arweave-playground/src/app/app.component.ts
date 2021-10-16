@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as arweave from '@coding/arweave';
-import { generateRustFile, IMetadata } from '@coding/codegenerator';
-import * as ace from 'ace-builds';
+import { CounterFunction, CounterFunctionInstance } from '@coding/counter';
 
 @Component({
   selector: 'coding-root',
@@ -21,26 +20,21 @@ import * as ace from 'ace-builds';
       <button type="button" (click)="getLastData()">Get Last Data</button>
       <h3>{{ lastData }}</h3>
 
-      <h1>Generate Rust code</h1>
-      <form [formGroup]="generateFileForm" (ngSubmit)="onSubmitGenerateFile()">
-        <textarea
-          name="json-text"
-          type="text"
-          aria-label="Arweave text uploader input"
-          formControlName="jsonText"
-        >
-        </textarea>
-        <button type="submit">Generate Code</button>
-      </form>
-      <textarea name="code" #editor></textarea>
+      <section>
+        <h3>Counter 1: {{ counter$.counter$() | async }}</h3>
+        <h3>Counter 2: {{ counterPair$.counter$() | async }}</h3>
+
+        <button (click)="pauseCounter(counter$)">Pause counter 1</button>
+        <button (click)="pauseCounter(counterPair$)">Pause counter 2</button>
+      </section>
     </main>
   `,
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements AfterViewInit {
-  @ViewChild('editor') private editor!: ElementRef<HTMLElement>;
-  aceEditor!: ace.Ace.Editor;
+export class AppComponent {
   lastData = '';
+  counter$ = CounterFunction();
+  counterPair$ = CounterFunction();
 
   uploadForm = new FormGroup({
     uploadText: new FormControl(''),
@@ -49,22 +43,6 @@ export class AppComponent implements AfterViewInit {
   generateFileForm = new FormGroup({
     jsonText: new FormControl(''),
   });
-
-  ngAfterViewInit(): void {
-    ace.config.set('fontSize', '16px');
-    
-
-    ace.config.set(
-      'basePath',
-      'https://unpkg.com/ace-builds@1.4.12/src-noconflict'
-    );
-
-    this.aceEditor = ace.edit(this.editor.nativeElement);
-    this.aceEditor.session.setValue('Your code will be here');
-
-    this.aceEditor.setTheme('ace/theme/twilight');
-    this.aceEditor.session.setMode('ace/mode/rust');
-  }
 
   onSubmitUpload = () => {
     const text = this.uploadForm.value.uploadText;
@@ -87,14 +65,7 @@ export class AppComponent implements AfterViewInit {
     });
   };
 
-  onSubmitGenerateFile = () => {
-    const json = JSON.parse(
-      this.generateFileForm.value.jsonText
-    ) as IMetadata;
-
-    const resp = generateRustFile(json);
-
-    console.log(resp.data);
-    this.aceEditor.session.setValue(resp.data as string);
+  pauseCounter = (counter: CounterFunctionInstance) => {
+    counter.pauseCounter();
   };
 }

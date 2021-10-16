@@ -1,42 +1,52 @@
 import { BehaviorSubject, Observable } from 'rxjs';
-
-const __counterValue$ = new BehaviorSubject<number>(0);
-let __currentTimer: number;
-
-const startCounter = () => {
-  const currentTimer = setInterval(() => {
-    __counterValue$.next(__counterValue$.value + 1);
-  }, 1000) as unknown as number; // this for react 'Timeout' type not 'number'
-
-  __currentTimer = currentTimer;
-};
-
-export const Counter = (): Observable<number> => {
-  startCounter();
-  return __counterValue$.asObservable();
-};
-
-export const RestartCounter = () => {
-  StopCounter();
-  startCounter();
-};
-
-export const PauseCounter = () => {
-  if (__currentTimer === 0) {
-    startCounter();
-  } else {
-    clearInterval(__currentTimer);
-    __currentTimer = 0;
-  }
-};
-
-export const StopCounter = () => {
-  if (__currentTimer === 0) return;
-
-  PauseCounter();
-  __counterValue$.next(0);
-};
-
-export const testFunction = () => {
-  return 
+export interface CounterFunctionInstance {
+  counter$: () => Observable<number>;
+  startCounter: () => number;
+  restartCounter: () => void;
+  pauseCounter: () => void;
+  stopCounter: () => void;
 }
+
+export const CounterFunction = (): CounterFunctionInstance => {
+  const _counterValue$ = new BehaviorSubject<number>(0);
+  const counter$ = () => _counterValue$.asObservable();
+
+  const startCounter = () => {
+    const currentTimer = setInterval(() => {
+      _counterValue$.next(_counterValue$.value + 1);
+    }, 1000) as unknown as number; // this for react 'Timeout' type not 'number'
+
+    return currentTimer;
+  };
+
+  const restartCounter = () => {
+    stopCounter();
+    startCounter();
+  };
+
+  const pauseCounter = () => {
+    if (_currentTimer === 0) {
+      _currentTimer = startCounter();
+    } else {
+      clearInterval(_currentTimer);
+      _currentTimer = 0;
+    }
+  };
+
+  const stopCounter = () => {
+    if (_currentTimer === 0) return;
+
+    pauseCounter();
+    _counterValue$.next(0);
+  };
+
+  let _currentTimer: number = startCounter();
+
+  return {
+    counter$,
+    startCounter,
+    restartCounter,
+    pauseCounter,
+    stopCounter,
+  };
+};
