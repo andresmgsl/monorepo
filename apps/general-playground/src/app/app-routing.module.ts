@@ -8,6 +8,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./rxjs-tests/rxjs-tests.module').then((m) => m.RxjsTestsModule),
   },
+  {
+    path: 'tailwind',
+    loadChildren: () =>
+      import('./tailwind-tests/tailwind-tests.module').then(
+        (m) => m.TailwindTestsModule
+      ),
+  },
 ];
 
 @NgModule({
