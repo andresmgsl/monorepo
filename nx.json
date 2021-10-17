@@ -36,10 +36,6 @@
     "arweave-playground": {
       "tags": []
     },
-    "arweave-playground-e2e": {
-      "tags": [],
-      "implicitDependencies": ["arweave-playground"]
-    },
     "blockchain-bsc-dapp-example": {
       "tags": ["binance smartchain dapp"]
     },
@@ -53,6 +49,9 @@
       "tags": []
     },
     "counter": {
+      "tags": []
+    },
+    "general-playground": {
       "tags": []
     }
   }

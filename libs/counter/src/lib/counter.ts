@@ -1,5 +1,5 @@
 import { BehaviorSubject, Observable } from 'rxjs';
-export interface CounterFunctionInstance {
+export interface CounterInstance {
   counter$: () => Observable<number>;
   startCounter: () => number;
   restartCounter: () => void;
@@ -7,8 +7,8 @@ export interface CounterFunctionInstance {
   stopCounter: () => void;
 }
 
-export const CounterFunction = (): CounterFunctionInstance => {
-  const _counterValue$ = new BehaviorSubject<number>(0);
+export const Counter = (initialValue = 0): CounterInstance => {
+  const _counterValue$ = new BehaviorSubject<number>(initialValue);
   const counter$ = () => _counterValue$.asObservable();
 
   const startCounter = () => {

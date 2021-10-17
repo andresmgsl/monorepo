@@ -172,33 +172,6 @@
         }
       }
     },
-    "arweave-playground-e2e": {
-      "root": "apps/arweave-playground-e2e",
-      "sourceRoot": "apps/arweave-playground-e2e/src",
-      "projectType": "application",
-      "targets": {
-        "e2e": {
-          "executor": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/arweave-playground-e2e/cypress.json",
-            "devServerTarget": "arweave-playground:serve:development",
-            "tsConfig": "apps/arweave-playground-e2e/tsconfig.json"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "arweave-playground:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/arweave-playground-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
     "blockchain-bsc-dapp-example": {
       "projectType": "application",
       "root": "apps/blockchain/bsc-dapp-example",
@@ -475,6 +448,99 @@
           "outputs": ["coverage/libs/counter"],
           "options": {
             "jestConfig": "libs/counter/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "general-playground": {
+      "projectType": "application",
+      "root": "apps/general-playground",
+      "sourceRoot": "apps/general-playground/src",
+      "prefix": "mimi",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/general-playground",
+            "index": "apps/general-playground/src/index.html",
+            "main": "apps/general-playground/src/main.ts",
+            "polyfills": "apps/general-playground/src/polyfills.ts",
+            "tsConfig": "apps/general-playground/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/general-playground/src/favicon.ico",
+              "apps/general-playground/src/assets"
+            ],
+            "styles": ["apps/general-playground/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/general-playground/src/environments/environment.ts",
+                  "with": "apps/general-playground/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "general-playground:build:production"
+            },
+            "development": {
+              "browserTarget": "general-playground:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "general-playground:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/general-playground/src/**/*.ts",
+              "apps/general-playground/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/general-playground"],
+          "options": {
+            "jestConfig": "apps/general-playground/jest.config.js",
             "passWithNoTests": true
           }
         }

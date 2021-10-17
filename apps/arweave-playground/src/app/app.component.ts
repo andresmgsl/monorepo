@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as arweave from '@coding/arweave';
-import { CounterFunction, CounterFunctionInstance } from '@coding/counter';
+import { Counter, CounterInstance } from '@coding/counter';
 
 @Component({
   selector: 'coding-root',
@@ -33,8 +33,8 @@ import { CounterFunction, CounterFunctionInstance } from '@coding/counter';
 })
 export class AppComponent {
   lastData = '';
-  counter$ = CounterFunction();
-  counterPair$ = CounterFunction();
+  counter$ = Counter();
+  counterPair$ = Counter();
 
   uploadForm = new FormGroup({
     uploadText: new FormControl(''),
@@ -65,7 +65,7 @@ export class AppComponent {
     });
   };
 
-  pauseCounter = (counter: CounterFunctionInstance) => {
+  pauseCounter = (counter: CounterInstance) => {
     counter.pauseCounter();
   };
 }
